@@ -11,23 +11,15 @@ using System;
 
 using Empiria.Data;
 
-using Empiria.Compliance.Adapters;
-
 namespace Empiria.Compliance.Data {
 
   /// <summary>Data read and write services for regulatory compliance obligations.</summary>
   static internal class ObligationsDataService {
 
-    static internal FixedList<Obligation> SearchObligations(SearchObligationsCommand searchCommand) {
+    static internal FixedList<Obligation> SearchObligations(string filter, string orderBy) {
       var sql = $"SELECT * FROM EOPObligations " +
-                "WHERE DesignStatus <> 'X'";
-
-      if (!String.IsNullOrWhiteSpace(searchCommand.Keywords)) {
-        var keywordsFilter = SearchExpression.ParseAndLikeKeywords("Keywords", searchCommand.Keywords);
-        sql += $" AND {keywordsFilter} ";
-      }
-
-      sql += $"ORDER BY {searchCommand.OrderBy}";
+                $"WHERE {filter} " +
+                $"ORDER BY {orderBy}";
 
       var op = DataOperation.Parse(sql);
 

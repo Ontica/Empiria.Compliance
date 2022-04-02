@@ -8,11 +8,23 @@
 *                                                                                                            *
 ************************* Copyright(c) La Vía Óntica SC, Ontica LLC and contributors. All rights reserved. **/
 using System;
+using System.Linq;
 
 namespace Empiria.Compliance.Adapters {
 
   /// <summary>Command payload used to search regulatory compliance obligations.</summary>
   public class SearchObligationsCommand {
+
+
+    public string[] Regulators {
+      get; set;
+    } = new string[0];
+
+
+    public string[] Topics {
+      get; set;
+    } = new string[0];
+
 
     public string Keywords {
       get; set;
@@ -24,15 +36,62 @@ namespace Empiria.Compliance.Adapters {
     } = "Name";
 
 
-    public int PageSize {
-      get; set;
-    } = 500;
-
-
-    public int Page {
-      get; set;
-    } = 1;
-
   }  // class SearchObligationsCommand
+
+
+
+  /// <summary>Extension methods for SearchObligationsCommand interface adapter.</summary>
+  static internal class ObligationsSearchCommandExtension {
+
+    #region Public methods
+
+    static public string MapToFilterString(this SearchObligationsCommand command) {
+      string keywordsFilter = BuildKeywordsFilter(command.Keywords);
+      string regulatorsFilter = BuildRegulatorsFilter(command.Regulators);
+      string topicsFilter = BuildTopicsFilter(command.Topics);
+
+      var filter = new Filter(keywordsFilter);
+
+      filter.AppendAnd(regulatorsFilter);
+      filter.AppendAnd(topicsFilter);
+
+      return filter.ToString();
+    }
+
+    #endregion Public methods
+
+    #region Private methods
+
+    static private string BuildKeywordsFilter(string keywords) {
+      return SearchExpression.ParseAndLikeKeywords("Keywords", keywords);
+    }
+
+
+    static private string BuildRegulatorsFilter(string[] regulatorsNicknames) {
+      if (regulatorsNicknames.Length == 0) {
+        return string.Empty;
+      }
+
+      string[] idsArray = regulatorsNicknames.Select(uid => Regulator.ParseNickName(uid).Id.ToString())
+                                             .ToArray();
+
+      return $"RegulatorId IN ({String.Join(", ", idsArray)})";
+    }
+
+
+    static private string BuildTopicsFilter(string[] topics) {
+      if (topics.Length == 0) {
+        return string.Empty;
+      }
+
+      string[] formattedTopics = topics.Select(x => $"'{x}'")
+                                      .ToArray();
+
+      return $"Topics IN ({String.Join(", ", formattedTopics)})";
+    }
+
+    #endregion Private methods
+
+  }  // SearchObligationsCommand
 
 }  // namespace Empiria.Compliance.Adapters

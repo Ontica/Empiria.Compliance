@@ -26,7 +26,7 @@ namespace Empiria.Compliance.UseCases {
     }
 
     static public ObligationsUseCases UseCaseInteractor() {
-      return ObligationsUseCases.CreateInstance<ObligationsUseCases>();
+      return UseCase.CreateInstance<ObligationsUseCases>();
     }
 
     #endregion Constructors and parsers
@@ -45,7 +45,10 @@ namespace Empiria.Compliance.UseCases {
     public FixedList<ObligationDescriptorDto> SearchObligations(SearchObligationsCommand searchCommand) {
       Assertion.AssertObject(searchCommand, "searchCommand");
 
-      FixedList<Obligation> obligations = ObligationsDataService.SearchObligations(searchCommand);
+      string filter = searchCommand.MapToFilterString();
+      string sort = searchCommand.OrderBy;
+
+      FixedList<Obligation> obligations = ObligationsDataService.SearchObligations(filter, sort);
 
       return ObligationMapper.Map(obligations);
     }

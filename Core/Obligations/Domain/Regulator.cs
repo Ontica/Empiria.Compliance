@@ -27,6 +27,15 @@ namespace Empiria.Compliance {
     }
 
 
+    static internal Regulator ParseNickName(string nickname) {
+      var regultor = BaseObject.TryParse<Regulator>($"Nickname = '{nickname}'");
+
+      Assertion.AssertObject(regultor, $"There is not defined a regulator with nickname '{nickname}'.");
+
+      return regultor;
+    }
+
+
     static public FixedList<Regulator> GetList() {
       var list = BaseObject.GetList<Regulator>(string.Empty, "Nickname");
 
