@@ -9,7 +9,6 @@
 ************************* Copyright(c) La Vía Óntica SC, Ontica LLC and contributors. All rights reserved. **/
 using System;
 
-using Empiria.Contacts;
 using Empiria.Json;
 using Empiria.StateEnums;
 
@@ -33,6 +32,9 @@ namespace Empiria.Compliance {
     static internal Obligation Parse(string uid) {
       return BaseObject.ParseKey<Obligation>(uid);
     }
+
+
+    static public Obligation Empty => BaseObject.ParseEmpty<Obligation>();
 
 
     #endregion Constructors and parsers
@@ -68,7 +70,7 @@ namespace Empiria.Compliance {
 
 
     [DataField("RegulatorId")]
-    public Contact Regulator {
+    public Regulator Regulator {
       get;
       private set;
     }
@@ -82,7 +84,7 @@ namespace Empiria.Compliance {
 
 
     [DataField("ProcedureId")]
-    public int ProcedureId {
+    public Procedure Procedure {
       get;
       private set;
     }

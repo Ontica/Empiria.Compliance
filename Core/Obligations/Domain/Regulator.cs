@@ -26,17 +26,16 @@ namespace Empiria.Compliance {
       return BaseObject.ParseKey<Regulator>(uid);
     }
 
-    static public new Regulator Empty {
-      get {
-        return BaseObject.ParseEmpty<Regulator>();
-      }
-    }
 
     static public FixedList<Regulator> GetList() {
       var list = BaseObject.GetList<Regulator>(string.Empty, "Nickname");
 
       return list.ToFixedList();
     }
+
+
+    static public new Regulator Empty => BaseObject.ParseEmpty<Regulator>();
+
 
     #endregion Constructors and parsers
 
