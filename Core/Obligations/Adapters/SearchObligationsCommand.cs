@@ -67,13 +67,13 @@ namespace Empiria.Compliance.Adapters {
     }
 
 
-    static private string BuildRegulatorsFilter(string[] regulatorsNicknames) {
-      if (regulatorsNicknames.Length == 0) {
+    static private string BuildRegulatorsFilter(string[] regulatorsUids) {
+      if (regulatorsUids.Length == 0) {
         return string.Empty;
       }
 
-      string[] idsArray = regulatorsNicknames.Select(uid => Regulator.ParseNickName(uid).Id.ToString())
-                                             .ToArray();
+      string[] idsArray = regulatorsUids.Select(uid => Regulator.Parse(uid).Id.ToString())
+                                        .ToArray();
 
       return $"RegulatorId IN ({String.Join(", ", idsArray)})";
     }

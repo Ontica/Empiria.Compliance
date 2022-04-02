@@ -22,17 +22,9 @@ namespace Empiria.Compliance {
       // Required by Empiria Framework.
     }
 
+
     static public new Regulator Parse(string uid) {
       return BaseObject.ParseKey<Regulator>(uid);
-    }
-
-
-    static internal Regulator ParseNickName(string nickname) {
-      var regultor = BaseObject.TryParse<Regulator>($"Nickname = '{nickname}'");
-
-      Assertion.AssertObject(regultor, $"There is not defined a regulator with nickname '{nickname}'.");
-
-      return regultor;
     }
 
 

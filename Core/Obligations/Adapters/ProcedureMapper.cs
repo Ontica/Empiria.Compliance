@@ -23,11 +23,7 @@ namespace Empiria.Compliance.Adapters {
     }
 
 
-    #endregion Public methods
-
-    #region Private methods
-
-    static private ProcedureDescriptorDto MapToDescriptor(Procedure procedure) {
+    static internal ProcedureDescriptorDto MapToDescriptor(Procedure procedure) {
       return new ProcedureDescriptorDto {
         UID = procedure.UID,
         Code = procedure.Code,
@@ -37,7 +33,7 @@ namespace Empiria.Compliance.Adapters {
       };
     }
 
-    #endregion Private methods
+    #endregion Public methods
 
   }  // class ProcedureMapper
 

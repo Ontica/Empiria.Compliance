@@ -31,7 +31,8 @@ namespace Empiria.Compliance.Adapters {
         Topics = obligation.Topics,
         Tags = obligation.Tags,
         LegalBasis = obligation.LegalBasis,
-        Regulator = obligation.Regulator.Alias
+        Regulator = obligation.Regulator.MapToNamedEntity(),
+        Procedure = ProcedureMapper.MapToDescriptor(obligation.Procedure)
       };
     }
 

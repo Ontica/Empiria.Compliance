@@ -42,8 +42,13 @@ namespace Empiria.Compliance.Adapters {
       get; internal set;
     }
 
-    public string Regulator {
+    public NamedEntityDto Regulator {
       get; internal set;
+    }
+
+    public ProcedureDescriptorDto Procedure {
+      get;
+      internal set;
     }
 
   }  // class ObligationDto
@@ -78,6 +83,5 @@ namespace Empiria.Compliance.Adapters {
     }
 
   }  // class ObligationDescriptorDto
-
 
 }  // namespace Empiria.Compliance.Adapters
