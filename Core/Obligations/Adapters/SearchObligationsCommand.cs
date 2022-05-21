@@ -55,7 +55,11 @@ namespace Empiria.Compliance.Adapters {
       filter.AppendAnd(regulatorsFilter);
       filter.AppendAnd(topicsFilter);
 
-      return filter.ToString();
+      if (!filter.IsEmpty) {
+        return filter.ToString();
+      } else {
+        return SearchExpression.AllRecordsFilter;
+      }
     }
 
     #endregion Public methods

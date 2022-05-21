@@ -82,6 +82,10 @@ namespace Empiria.Compliance.Adapters {
       get; internal set;
     }
 
+    public string ProcedureCode {
+      get; internal set;
+    }
+
   }  // class ObligationDescriptorDto
 
 }  // namespace Empiria.Compliance.Adapters

@@ -45,7 +45,8 @@ namespace Empiria.Compliance.Adapters {
         UID = obligation.UID,
         Name = obligation.Name,
         Topics = obligation.Topics,
-        Regulator = obligation.Regulator.Alias
+        Regulator = obligation.Regulator.Alias,
+        ProcedureCode = obligation.Procedure.Code
       };
     }
 

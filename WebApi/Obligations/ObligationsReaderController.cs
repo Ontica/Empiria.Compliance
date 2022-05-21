@@ -1,10 +1,10 @@
 ﻿/* Empiria Compliance ****************************************************************************************
 *                                                                                                            *
 *  Module   : Obligations Management                       Component : Web Api                               *
-*  Assembly : Empiria.Compliance.WebApi.dll                Pattern   : Controller                            *
+*  Assembly : Empiria.Compliance.WebApi.dll                Pattern   : Query Controller                      *
 *  Type     : ObligationsReaderController                  License   : Please read LICENSE.txt file          *
 *                                                                                                            *
-*  Summary  : Web Api used to read regulatory compliance obligations.                                        *
+*  Summary  : Query web api used to read regulatory compliance obligations.                                  *
 *                                                                                                            *
 ************************* Copyright(c) La Vía Óntica SC, Ontica LLC and contributors. All rights reserved. **/
 using System.Web.Http;
@@ -16,7 +16,7 @@ using Empiria.Compliance.Adapters;
 
 namespace Empiria.Compliance.Obligations.WebApi {
 
-  /// <summary>Web Api used to read regulatory compliance obligations.</summary>
+  /// <summary>Query web api used to read regulatory compliance obligations.</summary>
   public class ObligationsReaderController : WebApiController {
 
     #region Web Apis

@@ -46,7 +46,7 @@ namespace Empiria.Compliance.Adapters {
       get; internal set;
     }
 
-  }  // class ObligationDto
+  }  // class ProcedureDto
 
 
 
@@ -78,7 +78,6 @@ namespace Empiria.Compliance.Adapters {
       get; internal set;
     }
 
-  }  // class ObligationDescriptorDto
-
+  }  // class ProcedureDescriptorDto
 
 }  // namespace Empiria.Compliance.Adapters
