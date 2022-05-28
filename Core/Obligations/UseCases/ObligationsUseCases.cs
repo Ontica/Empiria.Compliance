@@ -34,7 +34,7 @@ namespace Empiria.Compliance.UseCases {
     #region Use cases
 
     public ObligationDto GetObligation(string obligationUID) {
-      Assertion.AssertObject(obligationUID, "obligationUID");
+      Assertion.Require(obligationUID, "obligationUID");
 
       var obligation = Obligation.Parse(obligationUID);
 
@@ -43,7 +43,7 @@ namespace Empiria.Compliance.UseCases {
 
 
     public FixedList<ObligationDescriptorDto> SearchObligations(SearchObligationsCommand searchCommand) {
-      Assertion.AssertObject(searchCommand, "searchCommand");
+      Assertion.Require(searchCommand, "searchCommand");
 
       string filter = searchCommand.MapToFilterString();
       string sort = searchCommand.OrderBy;
