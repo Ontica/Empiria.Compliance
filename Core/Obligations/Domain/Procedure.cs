@@ -85,7 +85,7 @@ namespace Empiria.Compliance {
     public string Keywords {
       get {
         return EmpiriaString.BuildKeywords(this.Code, this.ShortName, this.Modality, this.Name, this.GovName,
-                                           this.Regulator.FullName, this.Regulator.Alias, this.ProjectType,
+                                           this.Regulator.FullName, this.Regulator.ShortName, this.ProjectType,
                                            this.Tags, this.Topics, this.Subtopics);
       }
     }

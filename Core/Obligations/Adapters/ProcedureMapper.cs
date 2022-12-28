@@ -29,7 +29,7 @@ namespace Empiria.Compliance.Adapters {
         Code = procedure.Code,
         Name = procedure.Name,
         Topics = procedure.Topics,
-        Regulator = procedure.Regulator.Alias
+        Regulator = procedure.Regulator.ShortName
       };
     }
 
